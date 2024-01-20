@@ -11,7 +11,7 @@ const addTimerToDeleteTheCode = (email) => {
          console.error(error,`\nCould not delete the expiring code for email: ${email}`);
        }
      },
-     10 * 60 * 1000,
+     12 * 60 * 1000,
    );
  };
 
