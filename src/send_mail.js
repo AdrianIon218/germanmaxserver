@@ -3,7 +3,7 @@ const path = require("path");
 const ejs = require("ejs");
 
 const sendMailWithCode = async (mailObj) => {
-  const { to, code, failReq, successReq} = mailObj;
+  const { to, code, failReq, successReq } = mailObj;
   const emailSender = process.env.USER;
 
   try {
@@ -25,16 +25,22 @@ const sendMailWithCode = async (mailObj) => {
       (err, data) => {
         if (err) {
           console.log(err);
-          failReq()
+          failReq();
         } else {
           transporter.sendMail(
-            { from: emailSender, to: to, subject: "Resetare parolă cont GermanMax", text: "", html: data },
+            {
+              from: emailSender,
+              to: to,
+              subject: "Resetare parolă cont GermanMax",
+              text: "",
+              html: data,
+            },
             (error, info) => {
               if (error) {
                 console.log(error);
                 transporter.close();
                 failReq();
-              } else { 
+              } else {
                 transporter.close();
                 console.log("Email sent: " + info.response);
                 successReq(to);
