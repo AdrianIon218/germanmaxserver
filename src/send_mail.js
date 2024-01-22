@@ -43,17 +43,17 @@ const sendMailWithCode = async (mailObj) => {
               } else {
                 transporter.close();
                 console.log("Email sent: " + info.response);
-                successReq(to);
+                successReq();
               }
-            },
+            }
           );
         }
-      },
+      }
     );
   } catch (error) {
     console.error(error);
     throw new Error(
-      `Something went wrong in the sendmail method. Error: ${error.message}`,
+      `Something went wrong in the sendmail method. Error: ${error.message}`
     );
   }
 };
